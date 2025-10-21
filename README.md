@@ -7,37 +7,6 @@ LoanApplication est une application complète de gestion de prêts. Elle se comp
 
 ---
 
-## Structure du projet
-
-loanapplication/
-│
-├─ loan-app-admin/ # Backend Python (Flask)
-│ ├─ app.py
-│ ├─ dashboard.py
-│ ├─ database.py
-│ ├─ models.py
-│ ├─ uploads/ # Dossiers pour fichiers uploadés
-│ ├─ pycache/
-│ ├─ loan_applications.db
-│ ├─ loan_applications_v2.db
-│ └─ requirements.txt
-│
-└─ loan-app-client/ # Frontend Node.js
-├─ server.js
-├─ package.json
-├─ package-lock.json
-├─ .env
-├─ public/ # Fichiers statiques
-├─ model/ # JSON de workflow et OCR
-│ ├─ campagnyhouses.json
-│ ├─ demoworkflow.json
-│ └─ OCR.json
-└─ node_modules/
-
-yaml
-Copier le code
-
----
 
 ## Prérequis
 
