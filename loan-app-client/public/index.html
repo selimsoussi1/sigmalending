@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sigma Lending - Business Loan Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1><span class="sigma">SIGMA</span><span class="lending">LENDING</span></h1>
+                <p class="tagline">Business Financing Solutions</p>
+            </div>
+            <div class="secure-badge">
+                🔒 Secure Application
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">0% completed</div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage" style="display: none;">
+                <div class="success-icon">✅</div>
+                <h3>Application Submitted Successfully!</h3>
+                <p>Your application ID: <strong id="applicationId"></strong></p>
+                <p>We've received your application and will process it shortly.</p>
+                <div class="next-steps">
+                    <h4>What happens next?</h4>
+                    <ul>
+                        <li>✅ We'll review your application</li>
+                        <li>📧 You'll receive a decision within 24 hours</li>
+                        <li>📞 Our team may contact you for additional information</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <div class="error-icon">❌</div>
+                <h3>Submission Failed</h3>
+                <p id="errorText"></p>
+                <button onclick="hideMessages()" class="retry-btn">Try Again</button>
+            </div>
+
+            <!-- Application Status Page -->
+            <div class="status-page" id="statusPage" style="display: none;">
+                <div class="status-header">
+                    <h2>Application Status</h2>
+                    <p>Tracking application: <strong id="statusAppId"></strong></p>
+                </div>
+                
+                <div class="status-timeline">
+                    <div class="status-step active">
+                        <div class="step-icon">📝</div>
+                        <div class="step-content">
+                            <h4>Application Submitted</h4>
+                            <p>We've received your application</p>
+                            <span class="step-time" id="submittedTime"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="status-step" id="reviewStep">
+                        <div class="step-icon">🔍</div>
+                        <div class="step-content">
+                            <h4>Under Review</h4>
+                            <p>Our team is reviewing your application</p>
+                            <span class="step-time">Pending</span>
+                        </div>
+                    </div>
+                    
+                    <div class="status-step" id="aiStep">
+                        <div class="step-icon">🤖</div>
+                        <div class="step-content">
+                            <h4>AI Analysis</h4>
+                            <p>Our AI system is analyzing your business data</p>
+                            <span class="step-time">Pending</span>
+                        </div>
+                    </div>
+                    
+                    <div class="status-step" id="decisionStep">
+                        <div class="step-icon">🎯</div>
+                        <div class="step-content">
+                            <h4>Decision Ready</h4>
+                            <p>We'll notify you once a decision is made</p>
+                            <span class="step-time">Pending</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="status-actions">
+                    <button onclick="window.location.href='/'" class="back-btn">
+                        Submit Another Application
+                    </button>
+                    <button onclick="checkStatus()" class="refresh-btn">
+                        Refresh Status
+                    </button>
+                </div>
+            </div>
+
+            <!-- Introduction -->
+            <div class="intro-section" id="introSection">
+                <h2>Business Loan Application</h2>
+                <p>Complete your application in 10 minutes. Get a decision within 24 hours.</p>
+            </div>
+
+            <!-- Application Form -->
+            <form class="lending-form" id="lendingForm">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <div class="section-title">👤 Business Information</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="companyName">Legal Company Name *</label>
+                            <input type="text" id="companyName" name="companyName" required>
+                            <div class="error-text" id="companyNameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="companyNumber">Company Registration Number *</label>
+                            <input type="text" id="companyNumber" name="companyNumber" required>
+                            <div class="error-text" id="companyNumberError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="businessType">Business Type *</label>
+                            <select id="businessType" name="businessType" required>
+                                <option value="">Select business type</option>
+                                <option value="ltd">Private Limited Company</option>
+                                <option value="plc">Public Limited Company</option>
+                                <option value="llp">Limited Liability Partnership</option>
+                                <option value="sole">Sole Trader</option>
+                                <option value="partnership">Partnership</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="industry">Industry *</label>
+                            <select id="industry" name="industry" required>
+                                <option value="">Select industry</option>
+                                <option value="technology">Technology</option>
+                                <option value="retail">Retail</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="professional">Professional Services</option>
+                                <option value="construction">Construction</option>
+                                <option value="hospitality">Hospitality</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="form-section">
+                    <div class="section-title">📞 Contact Information</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                            <div class="error-text" id="firstNameError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                            <div class="error-text" id="lastNameError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error-text" id="emailError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                            <div class="error-text" id="phoneError"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Business Address *</label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                        <div class="error-text" id="addressError"></div>
+                    </div>
+                </div>
+
+                <!-- Financial Information -->
+                <div class="form-section">
+                    <div class="section-title">💰 Financial Information</div>
+                    <div class="form-row">
+                        <div class="form-group amount-input">
+                            <label for="amount">Loan Amount Requested *</label>
+                            <div class="currency">$</div>
+                            <input type="number" id="amount" name="amount" min="1000" max="10000000" step="1000" required>
+                            <div class="helper-text">Between $1,000 and $10,000,000</div>
+                            <div class="error-text" id="amountError"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="loanPurpose">Loan Purpose *</label>
+                            <select id="loanPurpose" name="loanPurpose" required>
+                                <option value="">Select purpose</option>
+                                <option value="working_capital">Working Capital</option>
+                                <option value="equipment">Equipment Purchase</option>
+                                <option value="expansion">Business Expansion</option>
+                                <option value="inventory">Inventory Purchase</option>
+                                <option value="refinance">Debt Refinancing</option>
+                                <option value="real_estate">Real Estate</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="annualRevenue">Annual Revenue ($) *</label>
+                            <input type="number" id="annualRevenue" name="annualRevenue" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="yearsInBusiness">Years in Business *</label>
+                            <input type="number" id="yearsInBusiness" name="yearsInBusiness" min="0" max="50" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Document Upload -->
+                <div class="form-section">
+                    <div class="section-title">📎 Required Documents</div>
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📤</div>
+                        <h4>Upload Business Documents</h4>
+                        <p>Drag & drop files here or click to browse</p>
+                        <input type="file" id="fileInput" multiple accept=".pdf,.jpg,.jpeg,.png" style="display: none;">
+                        <button type="button" class="browse-btn" onclick="document.getElementById('fileInput').click()">
+                            Browse Files
+                        </button>
+                        <div class="file-list" id="fileList"></div>
+                    </div>
+                    <div class="helper-text">
+                        Required: Business bank statements (last 6 months), Company registration documents, Financial statements
+                    </div>
+                </div>
+
+                <!-- Consent Section -->
+                <div class="form-section">
+                    <div class="section-title">✅ Consent & Agreement</div>
+                    <div class="consent-section">
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">
+                                    I agree to the <a href="/privacy" target="_blank">Privacy Policy</a> and 
+                                    <a href="/terms" target="_blank">Terms of Service</a> *
+                                </span>
+                            </label>
+                            <div class="error-text" id="consentError"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Section -->
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-text">Submit Application</span>
+                        <div class="btn-loader" style="display: none;">
+                            <div class="spinner"></div>
+                        </div>
+                    </button>
+                    <p class="submit-note">
+                        Your information is secure and encrypted. We'll contact you within 24 hours.
+                    </p>
+                </div>
+            </form>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Sigma Lending. All rights reserved.</p>
+            <p>FCA Authorized and Regulated</p>
+        </footer>
+    </div>
+
+    <script src="form.js"></script>
+    <script src="upload.js"></script>
+</body>
+</html>
