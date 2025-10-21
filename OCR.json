@@ -1,0 +1,541 @@
+{
+  "name": "Sigma 1",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -288,
+        0
+      ],
+      "id": "392a34b4-626d-4be6-950a-9a135ae71fb6",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "searchMethod": "query",
+        "queryString": "not name contains \"comp house\"",
+        "returnAll": true,
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1zqG4OJmjac8MoEqqMIAU8jt-qtLHh-6X",
+            "mode": "list",
+            "cachedResultName": "Sigma Landing",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1zqG4OJmjac8MoEqqMIAU8jt-qtLHh-6X"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -80,
+        0
+      ],
+      "id": "f6b5f6e2-8344-4ec6-b0f9-c131b524b59c",
+      "name": "Search files and folders",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "saPIic5eV3NGfgtv",
+          "name": "Google Drive account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "batchSize": 5,
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "4b002f99-3dd2-4c67-ac9f-0a9bb2168642",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Search files and folders').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        480,
+        16
+      ],
+      "id": "7ae6a68f-c0a4-46ae-8a73-773cc1192e94",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "saPIic5eV3NGfgtv",
+          "name": "Google Drive account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.cloud.llamaindex.ai/api/v1/parsing/upload",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer llx-MI5DgBap5hUmAbFJKpU2dUbFAUmHxxv9AIgHTW2ABTOaYmlq"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        688,
+        160
+      ],
+      "id": "83301c96-2ba5-4c6f-b9d3-71f4d8c576f3",
+      "name": "Upload"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        224
+      ],
+      "id": "30205512-29de-45f1-88f7-8e6a55e3dabc",
+      "name": "Wait",
+      "webhookId": "YOUR_WEBHOOK_ID"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.status }}",
+                    "rightValue": "SUCCESS",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "5fe5fdf8-6137-4466-8e88-acaaebbf94a5"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "SUCCESS"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a1480222-bc5d-4697-b169-5e94a5afa0ed",
+                    "leftValue": "={{ $json.status }}",
+                    "rightValue": "PENDING",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "PENDING"
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1216,
+        224
+      ],
+      "id": "86342cbf-ac04-4b4b-ac93-6f8a0acced02",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.cloud.llamaindex.ai/api/v1/parsing/job/{{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer llx-MI5DgBap5hUmAbFJKpU2dUbFAUmHxxv9AIgHTW2ABTOaYmlq"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1040,
+        224
+      ],
+      "id": "fbf76672-25f5-47b3-938b-8a9eef381aad",
+      "name": "Status"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.cloud.llamaindex.ai/api/v1/parsing/job/{{ $json.id }}/result/markdown",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer llx-MI5DgBap5hUmAbFJKpU2dUbFAUmHxxv9AIgHTW2ABTOaYmlq"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1424,
+        208
+      ],
+      "id": "e261ffa9-653b-44a6-b860-1b179757192a",
+      "name": "Get"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "markdown"
+            }
+          ]
+        },
+        "options": {
+          "mergeLists": true
+        }
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1616,
+        208
+      ],
+      "id": "72a3697b-f6aa-4180-9829-85eb52b1a0eb",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.markdown }} extract these {\n  \"company\": {\n    \"company_name\": \"ALPHA PAINTS LIMITED\",\n    \"registration_number\": \"07696194\",\n    \"years_in_business\": 14,\n    \"industry\": \"Wholesale trade\",\n    \"annual_turnover\": 427294.00,\n    \"turnover_growth_percent\": 19.0\n  },\n  \"loan\": {\n    \"amount\": 25000.00,\n    \"term_months\": 12,\n    \"purpose\": \"Warehouse expansion and inventory\",\n    \"loan_type\": \"Unsecured\"\n  },\n  \"financials\": {\n    \"net_worth\": 22487.00,\n    \"net_profit\": null,\n    \"total_debt\": 260150.86,\n    \"monthly_revenue\": 104000.00,\n    \"monthly_expenses\": 95000.00\n  },\n  \"banking\": {\n    \"opening_balance\": 5333.01,\n    \"closing_balance\": 261212.49,\n    \"avg_balance\": 85000.00,\n    \"lowest_balance\": -323452.85,\n    \"days_negative\": 8,\n    \"total_income\": 2911273.69,\n    \"total_outgoing\": 2655394.21,\n    \"bounced_payments\": 0,\n    \"overdraft_limit\": 50000.00\n  },\n  \"director\": {\n    \"name\": \"Mr PAUL EDMUNDS\",\n    \"age\": 56,\n    \"property_value\": 300000.00,\n    \"mortgage_balance\": 51380.45,\n    \"home_equity\": 248619.55\n  },\n  \"risk_score\": {\n    \"loan_to_turnover\": 0.058,\n    \"debt_to_income\": 0.61,\n    \"cash_coverage_months\": 12.5,\n    \"high_risk_flags\": [\n      \"Multiple recent loans\",\n      \"Net worth below loan amount\",\n      \"Period of negative balance\"\n    ],\n    \"positive_flags\": [\n      \"19% revenue growth\",\n      \"14 years established\",\n      \"Strong closing balance\",\n      \"Director property equity\"\n    ]\n  }\n}",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        2000,
+        160
+      ],
+      "id": "89ffeece-053b-4ca6-9014-1cb8c1130d00",
+      "name": "AI Agent",
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4",
+          "mode": "list",
+          "cachedResultName": "gpt-4"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1904,
+        368
+      ],
+      "id": "a009b0b0-dec8-4bae-a142-f276d3c30619",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "KnedYMWImFehKZJ6",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"company\": {\n    \"company_name\": \"ALPHA PAINTS LIMITED\",\n    \"registration_number\": \"07696194\",\n    \"years_in_business\": 14,\n    \"industry\": \"Wholesale trade\",\n    \"annual_turnover\": 427294.00,\n    \"turnover_growth_percent\": 19.0\n  },\n  \"loan\": {\n    \"amount\": 25000.00,\n    \"term_months\": 12,\n    \"purpose\": \"Warehouse expansion and inventory\",\n    \"loan_type\": \"Unsecured\"\n  },\n  \"financials\": {\n    \"net_worth\": 22487.00,\n    \"net_profit\": null,\n    \"total_debt\": 260150.86,\n    \"monthly_revenue\": 104000.00,\n    \"monthly_expenses\": 95000.00\n  },\n  \"banking\": {\n    \"opening_balance\": 5333.01,\n    \"closing_balance\": 261212.49,\n    \"avg_balance\": 85000.00,\n    \"lowest_balance\": -323452.85,\n    \"days_negative\": 8,\n    \"total_income\": 2911273.69,\n    \"total_outgoing\": 2655394.21,\n    \"bounced_payments\": 0,\n    \"overdraft_limit\": 50000.00\n  },\n  \"director\": {\n    \"name\": \"Mr PAUL EDMUNDS\",\n    \"age\": 56,\n    \"property_value\": 300000.00,\n    \"mortgage_balance\": 51380.45,\n    \"home_equity\": 248619.55\n  },\n  \"risk_score\": {\n    \"loan_to_turnover\": 0.058,\n    \"debt_to_income\": 0.61,\n    \"cash_coverage_months\": 12.5,\n    \"high_risk_flags\": [\n      \"Multiple recent loans\",\n      \"Net worth below loan amount\",\n      \"Period of negative balance\"\n    ],\n    \"positive_flags\": [\n      \"19% revenue growth\",\n      \"14 years established\",\n      \"Strong closing balance\",\n      \"Director property equity\"\n    ]\n  }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        2224,
+        432
+      ],
+      "id": "a32ce628-6676-4a9e-92a7-0f75cac01b11",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "h0Jer5YWQlOQdjY8",
+          "mode": "list",
+          "cachedResultName": "search_agent"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {}
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        2080,
+        368
+      ],
+      "id": "a27f36e5-daae-4fef-bf9c-2ea1231f3046",
+      "name": "Call 'search_agent'"
+    },
+    {
+      "parameters": {
+        "content": "All files must be found in the drive\nthe company house file must be name comp house\n"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        -176
+      ],
+      "id": "b27f34ad-4bc7-475e-b5db-e1dc1b925d2e",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Upload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Get",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Status": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'search_agent'": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "614d2c06-2efa-49d9-b8c5-50112f8f7571",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "e779f7b2d36f865362af6733d07f0f0c2c900c537580757fe1860b8272a4c429"
+  },
+  "id": "RJHFkebqHXm8ruCI",
+  "tags": []
+}
