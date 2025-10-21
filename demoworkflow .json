@@ -1,0 +1,78 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "application-submitted",
+        "options": {
+          "responseMode": "lastNode"
+        }
+      },
+      "id": "Webhook_Application",
+      "name": "Webhook Application Submitted",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "path": "/Applications/{{ $json[\"clientId\"] }}/{{ $json[\"clientId\"] }}.pdf",
+        "binaryPropertyName": "file"
+      },
+      "id": "Dropbox_Upload",
+      "name": "Dropbox Upload PDF",
+      "type": "n8n-nodes-base.dropbox",
+      "typeVersion": 1,
+      "credentials": {
+        "dropboxApi": "Dropbox Account"
+      },
+      "position": [550, 300]
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "https://slack.com/api/conversations.create",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersJson": "{\"name\": \"{{$json[\\\"clientId\\\"]}}\", \"is_private\": false}"
+      },
+      "id": "Slack_Create_Channel",
+      "name": "Slack Create Channel",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "credentials": {
+        "httpHeaderAuth": "Slack API"
+      },
+      "position": [850, 200]
+    },
+    {
+      "parameters": {
+        "requestMethod": "POST",
+        "url": "https://slack.com/api/chat.postMessage",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersJson": "{\n  \"channel\": \"{{ $json[\"channel\"][\"id\"] }}\",\n  \"text\": \"New application received: {{$json[\"clientId\"]}}\\nDropbox file: {{$json[\"fileUrl\"] || 'Check Dropbox'}}\"\n}"
+      },
+      "id": "Slack_Notify",
+      "name": "Slack Notify",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "credentials": {
+        "httpHeaderAuth": "Slack API"
+      },
+      "position": [1150, 200]
+    }
+  ],
+  "connections": {
+    "Webhook Application Submitted": {
+      "main": [[{"node": "Dropbox Upload PDF", "type": "main", "index": 0}]]
+    },
+    "Dropbox Upload PDF": {
+      "main": [[{"node": "Slack Create Channel", "type": "main", "index": 0}]]
+    },
+    "Slack Create Channel": {
+      "main": [[{"node": "Slack Notify", "type": "main", "index": 0}]]
+    }
+  }
+}
