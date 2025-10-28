@@ -1,0 +1,24 @@
+Flask==3.0.3
+celery==5.4.0
+redis==5.1.1  # Celery backend/broker
+numpy
+pandas==2.2.3
+scikit-learn==1.5.2
+tiktoken
+fitz
+fastapi
+PyMuPDF==1.24.10
+pytesseract==0.3.13
+pdf2image==1.17.0
+Pillow==10.4.0
+# --- Google Generative AI SDK ---
+google-genai
+# --- Data Models ---
+pydantic==2.9.2
+spacy==3.7.5
+
+python-dotenv==1.1.1
+
+# Image processing
+opencv-python==4.10.0.84
+numpy==1.26.4

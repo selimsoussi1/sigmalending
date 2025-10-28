@@ -1,0 +1,678 @@
+text= """Account Summary
+Opening Balance
+15,361.45
+Payments In
+380,216.26
+Payments Out
+337,707.84
+Closing Balance
+57,869.87
+Date
+Paym ent type and details
+Paid out
+Paid in
+Balance
+07 Mar 25
+BALANCE BROUGHT FORWARD
+15,361.45
+08 Mar 25
+CR
+Elavon Financial S
+EMS605030800302553
+641.27
+16,002.72
+09 Mar 25
+CR
+Elavon Financial S
+EMS175030900182553
+772.76
+16,775.48
+10 Mar 25
+DD
+YU ENERGY
+66.59
+CR
+Elavon Financial S
+EMS014031000172553
+69.99
+CR
+SHOPIFY INTERNATIO
+SHOPIFY /PAYER ACC
+29.14
+CR
+ADVICE CONFIRMS
+RBC10035EL6CIFPC
+CUCU' S.R.L.S.
+707.66
+CR
+NUMI SCAN (GRIMSBY
+2200019595
+351.30
+CR
+ETSY IRELAND UNLIM
+etsy
+17.12
+CR
+That Kid Life
+2200019604
+104.94
+CR
+Little Heartbeats
+
+10.03.25
+68.40
+18,057.44
+11 Mar 25
+CR
+Elavon Financial S
+EMS450031101152553
+2,163.24
+CR
+DISCOUNT LTD SW
+2200019070
+1,513.32
+CR
+ETSY IRELAND UNLIM
+etsy
+26.82
+21,760.82
+12 Mar 25
+CR
+BENTS STG
+1,645.68
+BALANCE CARRIED FORWARD
+23,406.50
+Date
+Paym ent type and details
+Paid out
+Paid in
+Balance
+DD
+EBAY COMMERCE UK L
+2.04
+DD
+ROYAL MAIL GROUP L
+136.76
+DD
+O2
+42.86
+CR
+Elavon Financial S
+EMS914031200292553
+137.94
+CR
+ADVICE CONFIRMS
+RBC12035H96J5UDC
+FDT OUTDOORS LIMIT
+55.20
+BP
+GLOBAL CURRENCY EX
+7177-359-1
+38.87
+BP
+HMRC CORP TAX CUMB
+914PM00185227
+1,962.75
+BP
+INTERLINK EXPRESS
+BE MY BEAR
+1,996.75
+BP
+Freightlane Ltd
+FL14510
+344.00
+BP
+Freightlane Ltd
+FL14510
+75.00
+BP
+PEACOCK FIBRES LTD
+BE MY BEAR
+1,135.18
+17,865.43
+13 Mar 25
+CR
+Elavon Financial S
+EMS390031300272553
+3,118.12
+CR
+ATTRIT HEALT LTD
+2200019612
+434.88
+CR
+FIRST GLIMPSE LIMI
+HEARTBEAT BEARS
+265.02
+CR
+BABY, SCAN AND BEY
+2200019616
+780.00
+BP
+S H JONES
+BE MY BEAR
+150.00
+BP
+ALDEMORE
+BEMYBEAR
+10,000.00
+12,313.45
+14 Mar 25
+DD
+WORLD OPTIONS LTD
+48.52
+CR
+FREIGHTLANE LIMITE
+REFUND
+344.00
+CR
+SHOPIFY INTERNATIO
+SHOPIFY /PAYER ACC
+49.46
+12,658.39
+15 Mar 25
+CR
+BUDDIES PLAY DEN L
+2200019620
+271.62
+CR
+Nu-Gen Ultrasound
+2200019621
+827.22
+13,757.23
+16 Mar 25
+CR
+Elavon Financial S
+EMS017031600192553
+630.92
+14,388.15
+BALANCE CARRIED FORWARD
+14,388.15
+Date
+Paym ent type and details
+Paid out
+Paid in
+Balance
+17 Mar 25
+CR
+Elavon Financial S
+EMS995031700192553
+957.60
+BP
+M BRADSHAW
+BE MY BEAR
+4,750.00
+CR
+THE CRAFT CABIN
+2000029176
+275.75
+CR
+FRASER NP&A
+2200019635
+181.50
+11,053.00
+18 Mar 25
+DD
+EMS
+313.76
+CR
+Elavon Financial S
+EMS691031800222553
+1,318.80
+CR
+PAYPAL
+PPWDL4JS2222427EDY
+622.82
+CR
+Jamie Terence Clar
+
+2200019630
+419.00
+CR
+E Cook
+2200019639
+290.95
+13,390.81
+19 Mar 25
+DD
+EMS
+476.29
+DD
+ROYAL MAIL GROUP L
+170.79
+CR
+Elavon Financial S
+EMS979031900422553
+1,399.68
+CR
+SHOPIFY INTERNATIO
+SHOPIFY /PAYER ACC
+39.13
+CR
+RAYS OF SUNSHINE
+Order#2200019606
+753.54
+BP
+D HUMPHREYS
+BE MY BEAR
+175.50
+14,760.58
+20 Mar 25
+DD
+GOCARDLESS
+2,100.00
+CR
+UNIVERSITY COLLEGE
+REF  22119511
+942.30
+CR
+Elavon Financial S
+EMS973032000302553
+1,273.44
+CR
+SHOPIFY INTERNATIO
+SHOPIFY /PAYER ACC
+20.79
+CR
+BABY SCANNING LTD
+BABY SCANNING
+541.80
+CR
+BABY SCANNING LTD
+BABY SCANNING
+564.60
+16,003.51
+21 Mar 25
+CR
+AMAZON PAYMENTS UK
+29.52
+CR
+THE GROVE HOTEL
+472.37
+CR
+Elavon Financial S
+EMS544032100292553
+3,847.92
+20,353.32
+22 Mar 25
+CR
+Elavon Financial S
+EMS968032200322553
+1,295.28
+21,648.60
+BALANCE CARRIED FORWARD
+21,648.60
+Date
+Paym ent type and details
+Paid out
+Paid in
+Balance
+23 Mar 25
+CR
+Window to th
+Order 2200019653
+821.70
+22,470.30
+24 Mar 25
+DD
+HSBC PLC LOANS
+887.37
+CR
+Elavon Financial S
+EMS081032400192553
+136.62
+CR
+SHOPIFY INTERNATIO
+SHOPIFY /PAYER ACC
+63.83
+CR
+ETSY IRELAND UNLIM
+etsy
+100.13
+CR
+THE STAR TREE STUD
+2000029198
+119.58
+22,003.09
+25 Mar 25
+CR
+Elavon Financial S
+EMS878032500262553
+2,157.78
+CR
+HEY BABY 4D  LTD
+2200019657
+12.90
+CR
+YOUR BABY SC LTD
+YBSCAN
+94.68
+24,268.45
+26 Mar 25
+DD
+ROYAL MAIL GROUP L
+89.70
+CR
+Elavon Financial S
+EMS987032600292553
+1,755.57
+CR
+SHOPIFY INTERNATIO
+SHOPIFY /PAYER ACC
+36.00
+CR
+SHOPIFY INTERNATIO
+SHOPIFY /PAYER ACC
+11.74
+CR
+ETSY IRELAND UNLIM
+etsy
+22.83
+BP
+D HUMPHREYS
+BE MY BEAR
+1,909.52
+BP
+Frances Cretney
+
+Be My Bear Ltd
+37.18
+BP
+Mathew Johnson
+
+Be My Bear Ltd
+1,388.40
+BP
+MISS N F HARDING
+BE MY BEAR
+2,308.44
+BP
+P J THOMAS
+BE MY BEAR
+1,047.50
+BP
+ROBERT DYER
+BE MY BEAR
+1,254.80
+18,059.05
+27 Mar 25
+CR
+Elavon Financial S
+EMS844032700262553
+1,361.08
+CR
+SHOPIFY INTERNATIO
+SHOPIFY /PAYER ACC
+22.28
+CR
+GLOW EXPERIENTIAL
+Yippidoo lloyd
+2,293.20
+BALANCE CARRIED FORWARD
+21,735.61
+Date
+Paym ent type and details
+Paid out
+Paid in
+Balance
+CR
+FRASER NP&A
+2200019685
+110.94
+CR
+HOLLIDAY C A
+CAROL
+120.96
+21,967.51
+28 Mar 25
+DR
+TOTAL CHARGES
+TO 06MAR2025
+8.50
+CR
+Elavon Financial S
+EMS035032800382553
+15.99
+CR
+SHOPIFY INTERNATIO
+SHOPIFY /PAYER ACC
+29.14
+CR
+ETSY IRELAND UNLIM
+etsy
+22.52
+CR
+Baby Bumps Scan St
+
+#2200019688
+300.60
+22,327.26
+30 Mar 25
+CR
+Elavon Financial S
+EMS756033000182553
+262.61
+22,589.87
+31 Mar 25
+CR
+BUTLINS SKYLINE
+30,918.35
+SO
+DRM AND PJ THOMAS
+BE MY BEAR
+447.49
+CR
+Elavon Financial S
+EMS134033100162553
+109.99
+CR
+SHOPIFY INTERNATIO
+SHOPIFY /PAYER ACC
+217.88
+53,388.60
+01 Apr 25
+DD
+EDF ENERGY
+138.00
+DD
+ASH WASTE SERVICES
+69.77
+DD
+SHOPIFY
+188.38
+CR
+Elavon Financial S
+EMS367040100312553
+744.54
+CR
+Youssef Bouchikhi
+2200019701
+12.90
+CR
+GET LTD
+ORDER 2200019702
+16.20
+CR
+BABYART HQ LIMITED
+2200019675
+12.90
+CR
+Baby Bumps Scan St
+
+Delivery
+10.75
+53,789.74
+02 Apr 25
+DD
+SPOTLER CRM LTD
+16.80
+DD
+ROYAL MAIL GROUP L
+87.67
+CR
+Elavon Financial S
+EMS854040200332553
+2,000.12
+CR
+SHOPIFY INTERNATIO
+SHOPIFY /PAYER ACC
+36.23
+CR
+ETSY IRELAND UNLIM
+etsy
+30.78
+BALANCE CARRIED FORWARD
+55,752.40
+Date
+Paym ent type and details
+Paid out
+Paid in
+Balance
+CR
+ULTRASOUND-CARE (M
+2200019714
+862.80
+CR
+THE HIDEOUT SOFT P
+2200019716
+385.92
+57,001.12
+03 Apr 25
+DD
+GOCARDLESS
+648.00
+CR
+ADVICE CONFIRMS
+RBQ03045NJ8GT9OM
+EASTON SCHOOL HOUS
+0000001.20101456
+128.76
+CR
+Elavon Financial S
+EMS551040300282553
+328.67
+CR
+PAYPAL
+PPWDL4JS222222SVC6
+742.64
+CR
+ETSY IRELAND UNLIM
+etsy
+272.64
+CR
+ADVICE CONFIRMS
+RBC03045KI8JX6DC
+BUSINESS SAVINGS
+300,000.00
+357,825.83
+04 Apr 25
+CR
+AMAZON PAYMENTS UK
+105.20
+DD
+COMMERCIAL CARD
+1,473.90
+CR
+Elavon Financial S
+EMS311040400282553
+2,242.68
+DR
+STANLEY TEE LLP
+BE MY BEAR LIMITED
+300,000.00
+DR
+CHARGE
+EFT PAYMENT
+30.00
+58,669.81
+06 Apr 25
+CR
+Elavon Financial S
+EMS084040600162553
+151.00
+58,820.81
+07 Apr 25
+CR
+CHQ  IN AT 403007
+168.73
+DD
+NEST
+429.11
+CR
+Elavon Financial S
+EMS161040700172553
+370.80
+DR
+UNPAID CHEQUE
+168.73
+CR
+ETSY IRELAND UNLIM
+etsy
+93.73
+CR
+Howard H L
+INV19732
+106.56
+BP
+D S WEBB
+BE MY BEAR
+262.50
+BP
+GLOBAL CURRENCY EX
+7177-359-1
+228.91
+BP
+UKFAST.NET LTD
+BE MY BEAR LTD
+601.51
+57,869.87
+BALANCE CARRIED FORWARD
+57,869.87"""
+import spacy
+from typing import List, Dict, Any
+
+# Load the small English pipeline model
+# NOTE: This assumes you have run 'python -m spacy download en_core_web_sm'
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    print("Error: The 'en_core_web_sm' model is not loaded. Please install it first.")
+    # Return an empty list or raise an exception if the model is required
+def identify_entities_with_spacy(filtered_text: str):
+    """
+    Processes text using spaCy's NER to identify relevant entities 
+    for financial parsing (Money, Organization, Date).
+
+    Args:
+        filtered_text: The clean text string containing only financial data.
+
+    Returns:
+        A list of dictionaries, where each dict represents a found entity 
+        with its text, label, and position.
+    """
+    
+    # Process the document text
+    doc = nlp(filtered_text)
+    
+    # Define which labels are most useful for bank statement analysis
+    FINANCIAL_LABELS = ["MONEY", "ORG", "DATE", "CARDINAL"]
+    entities = []
+    for ent in doc.ents:
+        if ent.label_ in FINANCIAL_LABELS:
+            entities.append({
+                "text": ent.text.strip(),
+                "label": ent.label_,
+                "start_char": ent.start_char,
+                "end_char": ent.end_char,
+                # Include the surrounding context to help with classification (e.g., Paid In vs. Paid Out)
+                "context": doc[ent.start - 5: ent.end + 5].text.strip().replace('\n', ' ')
+            })
+    return  entities
+l=identify_entities_with_spacy(text)
+context=""
+for e in l:
+    print(e["label"])
+    print(e["context"])
+    context+=f"{e['context']}\n"
+
+from report import generate_report
+generate_report(context)
